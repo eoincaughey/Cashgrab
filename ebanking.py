@@ -1,5 +1,6 @@
 from game_state import game_state
 import os
+import time
 
 def wait_for_keypress():
     input("")
@@ -20,16 +21,18 @@ def menu():
     print("=== safeMoney eBanking ===")
 
     for i in range(3):
-        bankID = input("eBanking ID: ")
-        pinCode = input("PIN: ")
+        ID = input("eBanking ID: ")
+        PIN = input("PIN: ")
 
-        if bankID == bankID and pinCode == pinCode:
+        if bankID == ID and pinCode == PIN:
             print(f"\nLogin successful! Your current balance is £{game_state["balance"]}\n")
             print("Press enter to log out.")
             wait_for_keypress()
             return
         else:
-            print("Invalid credentials. Try again.\n")
+            print("Invalid credentials. Press enter to retry.\n")
+            wait_for_keypress()
+            clear_screen()
 
     print("Too many failed attempts. Terminating session.")
     input("Press Enter to continue...")

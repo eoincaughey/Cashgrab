@@ -82,7 +82,7 @@ def play(balance):
 
                     if bet == 0:
 
-                        balance += rBalance
+                        game_state["balance"] += rBalance
 
                         print(f"You cashed out your chips for £{rBalance}. Returning to desktop with £{game_state['balance']}.")
                         print("Press enter to return to menu.")
