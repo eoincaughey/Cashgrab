@@ -1,0 +1,12 @@
+<<<<<<< HEAD
+right click in folder, open terminal
+
+pyinstaller main.py --onefile
+
+=======
+right click in folder, open terminal
+
+pyinstaller main.py --onefile
+
+>>>>>>> c3c416a88a1d162004d8e05cd506037914d6e02c
+will be in "dist" folder, you can rename .exe before sharing
