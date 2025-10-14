@@ -1,6 +1,6 @@
 ﻿# Cashgrab - A text-based crime simulator
 
-## Welcome to **Crime Business Simulator**, a text-based game where you rise through the underworld to build your criminal empire. Make money, run scams, gamble, and plan heists—everything it takes to become the # ultimate crime boss.
+## Welcome to **Cashgrab**, a text-based game where you rise through the underworld to build your criminal empire. Make money, run scams, gamble, and plan heists—everything it takes to become the # ultimate crime boss.
 
 ## Features
 ### - **Strategic gameplay:** Manage money, resources, and risk
@@ -17,6 +17,7 @@
 ### - pip install pyinstaller
 
 ### You can use pyinstaller to create your own executable using the "Create_new_distribution.txt"
+
 
 
 
