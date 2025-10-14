@@ -14,8 +14,9 @@
 ### Executable will be released when ready for testing.
 ### Otherwise, install pyinstaller:
 
-### pip install pyinstaller
+### - pip install pyinstaller
 
 ### You can use pyinstaller to create your own executable using the "Create_new_distribution.txt"
+
 
 
