@@ -23,7 +23,43 @@ This project is a text-based game simulating business and crime development. It 
 - **Multiple criminal paths:** Gambling, scams, theft, and more  
 - **Dynamic events:** Random encounters that can make or break your empire  
 - **Text-based interface:** Fully playable in your terminal  
-- **Replayable:** Different choices lead to unique outcomes  
+- **Replayable:** Different choices lead to unique outcomes
+
+## Activities & Mini‑Games
+
+The world is split into themed activity tracks. Each activity has a **reputation (Rep)** requirement to unlock — higher Rep unlocks higher‑risk, higher‑reward content.
+
+### Casino Games
+| Activity | Required Rep | Description |
+|---|---:|---|
+| Roulette | 0 | Classic wheel gambling — low barrier, variable payouts. |
+| Blackjack | 1 | Card game with strategy — better rewards for skill. |
+| Slots | 2 | High variance, chance-driven slot machines. |
+| Grand Prize Wheel Spin | 3 | High-tier prize wheel with significant payouts and consequences. |
+
+### Cybercrime
+| Activity | Required Rep | Description |
+|---|---:|---|
+| Phishing Scams | 1 | Social-engineering puzzles that net cash/reputation if successful. |
+
+### Robberies
+| Activity | Required Rep | Description |
+|---|---:|---|
+| Petrol Stations | 1 | Quick, lower-risk robberies with modest payout. |
+| Home Invasion | 2 | Riskier break-ins with higher reward and greater chance of consequences. |
+| Cash Vans | 3 | Coordinated heist requiring planning and resources. |
+| Credit Union | 4 | High-stakes robbery with large payoff and heavy fallout risk. |
+| State Bank | 5 | Endgame-level robbery: massive reward, extreme risk and consequences. |
+
+### Buying / Selling Illicit Goods
+| Activity | Required Rep | Description |
+|---|---:|---|
+| Physical Blackmarket | 0 | Street dealers and local markets — entry-level trade. |
+| Deep Web Markets | 1 | Higher-value illicit goods traded on hidden markets — more profit, more risk. |
+
+> **Unlock rules:** Players gain Reputation (Rep) by completing activities, achieving objectives, and spending in‑game currency on reputation‑boosting items. When a player's Rep reaches the required threshold, the corresponding activities become available.
+
+
 
 ## Releases
 The executable will be released when ready for testing.  
@@ -32,5 +68,6 @@ Otherwise, you can create your own executable using PyInstaller:
 
 ```bash
 pip install pyinstaller
+
 
 
