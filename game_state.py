@@ -36,7 +36,7 @@ def save_game():
     clear_screen()
     print("Game saved!")
 
-#atexit.register(save_game) #atexit is a module that runs when program is stopped
+atexit.register(save_game) #atexit is a module that runs when program is stopped
 
 # amended as above in order to save the game_state
 # as a .json file which can be persistent between runs.

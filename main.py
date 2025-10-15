@@ -6,7 +6,6 @@ import ebanking
 import phishing
 import webhack
 import vpn
-from vpn import connectionStatus
 import time
 import sys
 import os
@@ -34,7 +33,7 @@ def spinning_loading(duration=3, message=""):
 def mainMenu():
     while True:
         clear_screen()
-        print("\n=== Desktop ===")
+        print("=== Desktop ===")
         print("1. Mail Client")
         print("2. Online Casino")
         print("3. eBanking Portal")
