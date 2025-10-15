@@ -62,12 +62,15 @@ The world is split into themed activity tracks. Each activity has a **reputation
 
 
 ## Releases
-The executable will be released when ready for testing.  
+The executable game is available in the code listed in the GitHub repository. Labelled as "Cashgrab vX.X.X.exe".
+
+It is enough to download only the .exe and run as terminal executable.
 
 Otherwise, you can create your own executable using PyInstaller:  
 
 ```bash
 pip install pyinstaller
+
 
 
 
