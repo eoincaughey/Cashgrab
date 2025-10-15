@@ -116,13 +116,118 @@ def play_webhack():
 
     return False
 
-def result():
 
-    if breachResult:
-        print("SSH breach successful.")
-        wait_for_keypress()
-    else:
-        print("Breach failed. Terminating session.")
-        wait_for_keypress()
-        play_webhack()
 
+# Mock filesystem contents for your in-game root directory.
+
+
+fs = {
+
+    "app": [
+        "PowerPoint.app",
+        "Excel.app",
+        "Word.app",
+        "Edge.app"
+    ],
+    "bin": [
+        "game_server",
+        "daemon_launcher",
+        "backup_tool",
+        "log_rotator"
+    ],
+    "config": [
+        "app.conf",
+        "secrets.env (LOCKED)",
+        "deploy_notes.txt",
+        "feature_flags.json"
+    ],
+    "data": [
+        "users.db",
+        "saves/",
+        "economy/ledger_2025.qry",
+        "cache/"
+    ],
+    "logs": [
+        "access.log",
+        "error.log",
+        "audit.log"
+    ],
+    "backup": [
+        "nightly_2025-10-01.tar.gz",
+        "weekly_2025-09-28.tar.gz"
+    ],
+    # /home subtree
+    "home/.ssh": [
+        "authorized_keys",
+        "id_rsa.pub"
+    ],
+    "home/documents": [
+        "resume.docx",
+        "project_report.pdf",
+        "meeting_notes.txt"
+    ],
+    "home/pictures": [
+        "avatar_123.png",
+        "banner.jpg",
+        "screenshot_2025-10-01.png"
+    ],
+    "home/videos": [
+        "intro.mp4",
+        "promo_clip.mov"
+    ],
+}
+path = ""
+norm = ""
+
+def open_dir(path):
+    
+    global norm
+
+    path = input("Choose directory to navigate: ")
+    norm = path.strip().strip("/")
+    # Support calling 'home' to list top-level home entries
+    if norm == "home":
+        clear_screen()
+        children = [p.split("/",1)[1] for p in fs.keys() if p.startswith("home/")]
+        # unique and sorted
+        children = sorted(set(children))
+        print(f"/home/:")
+        for c in children:
+            print(c)
+
+    if norm in fs:
+        clear_screen()
+        print(f"{norm}/:")
+        for item in fs[norm]:
+            print(item)
+
+    elif f"home/{norm}" in fs:
+        clear_screen()
+        print(f"home/{norm}/:")
+        for item in fs[f"home/{norm}"]:
+            print(item)
+    elif norm in ["root", "cd .."]:
+        rootTree()
+    elif norm != "home":
+        print(f"No such directory mocked: '{path}'.")
+
+# Example usage: print every root entry and then open each one.
+def rootTree():
+    root_entries = ["app","bin","config","data","logs","backup","home","home/.ssh","home/documents","home/pictures","home/videos"]
+    if norm == "root" or "cd ..":
+        clear_screen()
+        print("root:")
+        for e in root_entries:
+            if e == "home":
+                print("/home/")
+            else:
+                print(f"└─ {e}/")
+        print("\n")
+        open_dir(path)
+
+    # Open each and show contents (example output)
+    for e in root_entries:
+        open_dir(e)
+        print("-" * 30)
+
+open_dir(path)
