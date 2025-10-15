@@ -7,6 +7,9 @@
 ## Releases
 The executable game is available in the code listed in the GitHub repository. Labelled as "Cashgrab vX.X.X.exe".
 
+Right now, the release 1.0.6 is available here: [Direct download — Cashgrab 1.0.6 (Windows .exe)](https://github.com/eoincaughey/Cashgrab/raw/main/Cashgrab%201.0.6.exe)
+
+
 It is enough to download only the .exe and run as terminal executable.
 
 Otherwise, you can create your own executable using PyInstaller:  
@@ -69,6 +72,7 @@ The world is split into themed activity tracks. Each activity has a **reputation
 | Deep Web Markets | 1 | Higher-value illicit goods traded on hidden markets — more profit, more risk. |
 
 > **Unlock rules:** Players gain Reputation (Rep) by completing activities, achieving objectives, and spending in‑game currency on reputation‑boosting items. When a player's Rep reaches the required threshold, the corresponding activities become available.
+
 
 
 
