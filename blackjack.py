@@ -20,7 +20,7 @@ def start(game_state):
         print("You have no money to play blackjack.")
         return game_state['balance']
 
-    updated_balance = blackjack.play(game_state['balance'])
+    updated_balance = play(game_state['balance'])
 
     if updated_balance is None:
         updated_balance = game_state['balance']

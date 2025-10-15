@@ -50,7 +50,14 @@ def mainMenu():
         elif choice == "3":
             ebanking.menu()
         elif choice == "4":
-            webhack.menu()
+            breachResult = webhack.play_webhack()
+            if breachResult:
+                print("SSH breach successful.")
+                wait_for_keypress()
+            else:
+                print("Breach failed. Terminating session.")
+                wait_for_keypress()
+                webhack.play_webhack()
         elif choice == "5":
             vpn.menu()
         elif choice == "6":

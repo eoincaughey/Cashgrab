@@ -86,24 +86,43 @@ def play_webhack():
     definition = entry["definition"]
 
     revealed = reveal_letters(word)
-    attempts = 0 
+    attempts = 0
 
-    print("--- New Word Chosen ---")
-    print(f"Defintion: {definition}")
+    SSHcode = random.randint(100000,999999)
+
+    print("=== SSH Breach Tool ===")
+    print("Challenge key generated.")
+    print(f"Definition: {definition}")
 
     while attempts < MAX_ATTEMPTS:
-        print("\nWord:", masked_word(word, revealed))
-        guess = input(f"Attempt {attempts + 1}/{MAX_ATTEMPTS} — Guess the word: ").strip().lower()
+        print("\nHint:", masked_word(word, revealed))
+        guess = input(f"Attempt {attempts + 1}/{MAX_ATTEMPTS} — Enter challenge key: ").strip().lower()
 
         if guess == word:
-            print(f"\n✅ Correct! The word was '{word}'. Well done.")
-            return True
+            spinning_loading(3, "Testing challenge key")
+            print(f"\nChallenge key accepted. SSH code generated: {SSHcode}")
+            SSHcodeTest = int(input("Enter generated SSH breach code: "))
+            if SSHcodeTest == SSHcode:
+                print("SSH code valid. Initiating breach sequence.")
+                spinning_loading(6, "Breaching SSH node")
+                return True
+                
         else:
             attempts += 1
             if attempts < MAX_ATTEMPTS:
-                print("❌ Incorrect. Try again.")
+                print(f"Challenge key denied. {attempts + 1} solve attempts remaining.")
             else:
-                print(f"\n❌ Out of guesses. The correct word was '{word}'. Better luck next time.")
+                print(f"\nChallenge key denied. Maximum attempts reached, terminating SSH breach.")
 
     return False
+
+def result():
+
+    if breachResult:
+        print("SSH breach successful.")
+        wait_for_keypress()
+    else:
+        print("Breach failed. Terminating session.")
+        wait_for_keypress()
+        play_webhack()
 

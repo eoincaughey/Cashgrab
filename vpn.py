@@ -103,6 +103,7 @@ def menu():
 
         elif choice == "3":
             break
+            # manage subscriptions here
                 
         elif choice == "4":
             break
