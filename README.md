@@ -4,6 +4,17 @@
 
 # Text-Based Business/Crime Simulation Game
 
+## Releases
+The executable game is available in the code listed in the GitHub repository. Labelled as "Cashgrab vX.X.X.exe".
+
+It is enough to download only the .exe and run as terminal executable.
+
+Otherwise, you can create your own executable using PyInstaller:  
+
+```bash
+pip install pyinstaller
+```
+
 ## Overview
 This project is a text-based game simulating business and crime development. It incorporates:  
 - A probability system influencing the outcome of actions  
@@ -60,16 +71,6 @@ The world is split into themed activity tracks. Each activity has a **reputation
 > **Unlock rules:** Players gain Reputation (Rep) by completing activities, achieving objectives, and spending in‑game currency on reputation‑boosting items. When a player's Rep reaches the required threshold, the corresponding activities become available.
 
 
-
-## Releases
-The executable game is available in the code listed in the GitHub repository. Labelled as "Cashgrab vX.X.X.exe".
-
-It is enough to download only the .exe and run as terminal executable.
-
-Otherwise, you can create your own executable using PyInstaller:  
-
-```bash
-pip install pyinstaller
 
 
 
