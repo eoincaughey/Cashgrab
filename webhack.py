@@ -34,3 +34,4 @@ def spinning_loading(duration=3, message=""):
 # Use this for the loading messages. It generates a message and then . . . after
 # The syntax to call it is spinning_loading(time in seconds, "Message")
 # the above will produce a > Message... loading animation
+

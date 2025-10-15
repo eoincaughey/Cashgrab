@@ -15,6 +15,19 @@ def clear_screen():
     else:
         os.system('clear')
 
+def start(game_state):
+    if game_state['balance'] <= 0:
+        print("You have no money to play blackjack.")
+        return game_state['balance']
+
+    updated_balance = blackjack.play(game_state['balance'])
+
+    if updated_balance is None:
+        updated_balance = game_state['balance']
+
+    game_state['balance'] = updated_balance
+    return game_state['balance']
+
 def startnewRound():
     print("Press enter to continue.")
     wait_for_keypress()

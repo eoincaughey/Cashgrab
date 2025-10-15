@@ -110,3 +110,40 @@ def send_mass_email():
             break  # exit loop after successful sending
         except ValueError:
             print("Invalid input. Please enter a valid number.")
+
+def menu():
+    clear_screen()
+    print("\n--- 'Gone Phishing' - Mail Client ---")
+    print("1. Locate addresses for sale")
+    print("2. Send mass email from .csv file")
+    print("3. Check contacts list")
+    print("4. Back")
+
+    choice = input("Choose an option: ")
+
+    if choice == "1":
+        locate_emails()
+        menu()
+
+    elif choice == "2":
+        send_mass_email()
+        menu()
+
+    elif choice == "3":
+        if game_state['noOfEmailAddresses'] > 0:
+            clear_screen()
+            print(f"You have {game_state['noOfEmailAddresses']} email addresses in your contacts list.")
+            print("Press enter to return.")
+            wait_for_keypress()
+            menu()
+        else:
+            clear_screen()
+            print("Your contacts list is empty. Press enter to return.")
+            wait_for_keypress()
+            menu()
+
+    elif choice == "4":
+        return
+
+    else:
+        print("Directory does not exist.")

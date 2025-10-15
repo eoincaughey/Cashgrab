@@ -4,6 +4,8 @@ import blackjack
 import roulette
 import ebanking
 import phishing
+import webhack
+import vpn
 import time
 import sys
 import os
@@ -28,34 +30,6 @@ def spinning_loading(duration=3, message=""):
             time.sleep(0.5)
     print("\r" + " " * 100, end="\r")
 
-def startRoulette(game_state):
-
-    if game_state['balance'] <= 0:
-        print("You have no money to play roulette.")
-        return game_state['balance']
-
-    updated_balance = roulette.play(game_state['balance'])
-
-    if updated_balance is None:
-        updated_balance = game_state['balance']
-
-    game_state['balance'] = updated_balance
-    return game_state['balance']
-
-def startBlackjack(game_state):
-    if game_state['balance'] <= 0:
-        print("You have no money to play blackjack.")
-        return game_state['balance']
-
-    updated_balance = blackjack.play(game_state['balance'])
-
-    if updated_balance is None:
-        updated_balance = game_state['balance']
-
-    game_state['balance'] = updated_balance
-    return game_state['balance']
-
-#Main menu function
 def mainMenu():
     while True:
         clear_screen()
@@ -63,61 +37,29 @@ def mainMenu():
         print("1. Mail Client")
         print("2. Online Casino")
         print("3. eBanking Portal")
-        print("4. Exit")
+        print("4. SSHush Web Client")
+        print("5. VästVPN Client")
+        print("6. Exit")
 
         choice = input("Choose an option: ")
 
         if choice == "1":
-            mailclientMenu()
+            phishing.menu()
         elif choice == "2":
             casinoMenu()
         elif choice == "3":
             ebanking.menu()
         elif choice == "4":
+            webhack.menu()
+        elif choice == "5":
+            vpn.menu()
+        elif choice == "6":
             print("Shutting down...")
             time.sleep(2)
             sys.exit()
             break
         else:
             print("Directory does not exist.")
-
-#Mail client - locates email addresses for sale, lets you send phishing emails to them to earn money
-def mailclientMenu():
-    clear_screen()
-    print("\n--- 'Gone Phishing' - Mail Client ---")
-    print("1. Locate addresses for sale")
-    print("2. Send mass email from .csv file")
-    print("3. Check contacts list")
-    print("4. Back")
-
-    choice = input("Choose an option: ")
-
-    if choice == "1":
-        phishing.locate_emails()
-        mailclientMenu()
-
-    elif choice == "2":
-        phishing.send_mass_email()
-        mailclientMenu()
-
-    elif choice == "3":
-        if game_state['noOfEmailAddresses'] > 0:
-            clear_screen()
-            print(f"You have {game_state['noOfEmailAddresses']} email addresses in your contacts list.")
-            print("Press enter to return.")
-            wait_for_keypress()
-            mailclientMenu()
-        else:
-            clear_screen()
-            print("Your contacts list is empty. Press enter to return.")
-            wait_for_keypress()
-            mailclientMenu()
-
-    elif choice == "4":
-        return
-
-    else:
-        print("Directory does not exist.")
 
 def casinoMenu():
     clear_screen()
@@ -131,10 +73,10 @@ def casinoMenu():
 
     if choice == "1":
         spinning_loading(2, "Loading Roulette")
-        startRoulette(game_state)
+        roulette.start(game_state)
     elif choice == "2":
         spinning_loading(2, "Loading Blackjack")
-        startBlackjack(game_state)
+        blackjack.start(game_state)
     elif choice == "3":
         print("Coming soon...")
         time.sleep(1)

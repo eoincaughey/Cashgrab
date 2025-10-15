@@ -27,6 +27,20 @@ def startnewRound():
     wait_for_keypress()
     clear_screen()
 
+def start(game_state):
+
+    if game_state['balance'] <= 0:
+        print("You have no money to play roulette.")
+        return game_state['balance']
+
+    updated_balance = roulette.play(game_state['balance'])
+
+    if updated_balance is None:
+        updated_balance = game_state['balance']
+
+    game_state['balance'] = updated_balance
+    return game_state['balance']
+
 def chooseValidColour(): # this function makes sure the user inputs a valid colour, otherwise it keeps asking them
     valid_choices = ["red", "black", "green"]
     while True:
