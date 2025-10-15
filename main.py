@@ -6,6 +6,7 @@ import ebanking
 import phishing
 import webhack
 import vpn
+from vpn import connectionStatus
 import time
 import sys
 import os

@@ -1,6 +1,5 @@
 from game_state import game_state
 import time
-import main
 import sys
 import os
 
@@ -24,75 +23,89 @@ def spinning_loading(duration=3, message=""):
             time.sleep(0.5)
     print("\r" + " " * 100, end="\r")
 
-
 servers = [
     {"id": "EU01", "city": "Stockholm", "country": "Sweden"},
     {"id": "EU02", "city": "Berlin", "country": "Germany"},
     {"id": "EU03", "city": "Paris", "country": "France"},
     {"id": "EU04", "city": "London", "country": "UK"},
-    {"id": "EU05", "city": "Amsterdam", "country": "Netherlands"},
-    {"id": "EU06", "city": "Madrid", "country": "Spain"},
-    {"id": "EU07", "city": "Rome", "country": "Italy"},
-    {"id": "EU08", "city": "Vienna", "country": "Austria"},
-    {"id": "EU09", "city": "Warsaw", "country": "Poland"},
     {"id": "NA01", "city": "New York", "country": "USA"},
     {"id": "NA02", "city": "Los Angeles", "country": "USA"},
-    {"id": "SA01", "city": "São Paulo", "country": "Brazil"},
-    {"id": "AS01", "city": "Tokyo", "country": "Japan"},
-    {"id": "AS02", "city": "Seoul", "country": "South Korea"},
-    {"id": "AS03", "city": "Mumbai", "country": "India"}
+    {"id": "AS01", "city": "Tokyo", "country": "Japan"}
     ]
 
 connectionStatus = "DISCONNECTED"
 connectedOrDisconnected = "Connect to"
+current_server = None
+
+def chooseServer():
+    clear_screen()
+    print("Available servers:\n")
+    for i, s in enumerate(servers, start=1):
+        print(f"{i}. {s['id']}, {s['country']} ({s['city']})")
+    
+    global current_server
+    current_server = input("\nEnter the server ID to select: ")
+    matched = [s for s in servers if s['id'] == current_server]
+    if matched:
+        current_server = matched[0]
+        print(f"\nServer selected: {current_server['city']}, {current_server['country']}")
+    else:
+        print("\nPlease select a valid server ID. Press enter to retry.")
+        wait_for_keypress()
+        chooseServer()
 
 def connectToggle():
     global connectionStatus, connectedOrDisconnected
 
-    if connectionStatus == "DISCONNECTED":
-        connectionStatus = "CONNECTED"
-    else:
-        connectionStatus = "DISCONNECTED"
-
-    if connectionStatus == "Connected":
-        connectedOrDisconnected = "Disconnect from"
-    else:
-        connectedOrDisconnected = "Connect to"
-
-def menu():
-    clear_screen()
-    print("\n--- VästVPN Client ---")
-    print(f"{connectionStatus}")
-    print("1. Server Location List")
-    print(f"2. {connectedOrDisconnected} server")
-    print("3. Manage your subscription")
-    print("4. Back")
-
-    choice = input("Choose an option: ")
-
-    if choice == "1":
-
-        menu()
-
-    elif choice == "2":
-        connectToggle()
-        menu()
-
-    elif choice == "3":
-        if game_state['noOfEmailAddresses'] > 0:
-            clear_screen()
-            print(f"You have {game_state['noOfEmailAddresses']} email addresses in your contacts list.")
-            print("Press enter to return.")
-            wait_for_keypress()
-            menu()
+    if current_server != None:
+        if connectionStatus == "DISCONNECTED":
+            #print(f"Server selected: {servers['id']}")
+            spinning_loading(3, "Connecting to server")
+            connectionStatus = "CONNECTED"
         else:
-            clear_screen()
-            print("Your contacts list is empty. Press enter to return.")
-            wait_for_keypress()
-            menu()
+            connectionStatus = "DISCONNECTED"
+            #print(f"Server selected: {servers['id']}")
+            spinning_loading(3, "Disconnecting from server")
 
-    elif choice == "4":
-        return
-
+        if connectionStatus == "CONNECTED":
+            connectedOrDisconnected = "Disconnect from"
+        else:
+            connectedOrDisconnected = "Connect to"
     else:
-        print("Directory does not exist.")
+        print("You must select a server to connect to. Press enter to view server list.")
+        wait_for_keypress()
+        chooseServer()
+        connectToggle()
+    
+def menu():
+    while True:
+        clear_screen()
+        print("\n--- VästVPN Client ---")
+        print(f"1. {connectedOrDisconnected} server")
+        print(f"2. Server Location List")
+        print("3. Manage your subscription")
+        print("4. Back")
+
+        print()
+        if current_server != None:
+            city = current_server["city"]
+            country = current_server["country"]
+            print(f"Server: {city}, {country}")
+        print(f"{connectionStatus}")
+
+        choice = input("Choose an option: ")
+
+        if choice == "1":
+            connectToggle()
+
+        elif choice == "2":
+            chooseServer()
+
+        elif choice == "3":
+            break
+                
+        elif choice == "4":
+            break
+
+        else:
+            print("Directory does not exist.")
