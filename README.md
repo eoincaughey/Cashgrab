@@ -2,22 +2,6 @@
 
 ## Welcome to **Cashgrab**, a text-based game where you rise through the underworld to build your criminal empire. Make money, run scams, gamble, and plan heists—everything it takes to become the ultimate crime boss.
 
-## Features
-### - **Strategic gameplay:** Manage money, resources, and risk
-### - **Multiple criminal paths:** Gambling, scams, theft, and more
-### - **Dynamic events:** Random encounters that can make or break your empire
-### - **Text-based interface:** Fully playable in your terminal
-### - **Replayable:** Different choices lead to unique outcomes
-
-## Releases
-
-### Executable will be released when ready for testing.
-### Otherwise, install pyinstaller:
-
-### - pip install pyinstaller
-
-### You can use pyinstaller to create your own executable using the "Create_new_distribution.txt"
-
 # Text-Based Business/Crime Simulation Game
 
 ## Overview
@@ -34,5 +18,19 @@ This project is a text-based game simulating business and crime development. It 
 - **Items & Upgrades:** Players can purchase items with in-game currency that affect reputation and success rates in mini-games or actions.  
 - **Game Over Condition:** The game ends when a player’s overall balance reaches £0.
 
+## Features
+- **Strategic gameplay:** Manage money, resources, and risk  
+- **Multiple criminal paths:** Gambling, scams, theft, and more  
+- **Dynamic events:** Random encounters that can make or break your empire  
+- **Text-based interface:** Fully playable in your terminal  
+- **Replayable:** Different choices lead to unique outcomes  
+
+## Releases
+The executable will be released when ready for testing.  
+
+Otherwise, you can create your own executable using PyInstaller:  
+
+```bash
+pip install pyinstaller
 
 
